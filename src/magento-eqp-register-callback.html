@@ -1,0 +1,34 @@
+<script type="text/javascript">
+	/* global RED:readonly */
+
+	RED.nodes.registerType('magento-eqp-register-callback', {
+		category: 'function',
+		color: '#f46f25',
+		defaults: {
+			name: { value: '' },
+			config: { value: '', type: 'magento-eqp-config', required: true }
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: 'file.png',
+		label: function () {
+			return this.name || 'Magento EQP Register Callback';
+		}
+	});
+</script>
+
+<script type="text/x-red" data-template-name="magento-eqp-register-callback">
+	<div class="form-row">
+		<label for="node-input-name"><i class="icon-tag"></i>Name</label>
+		<input type="text" id="node-input-name" placeholder="Name" />
+	</div>
+
+	<div class="form-row">
+		<label for="node-input-config"><i class="icon-tag"></i>Configuration</label>
+		<input type="text" id="node-input-config" />
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="magento-eqp-register-callback">
+	<p>A node to register a callback URL on the Magento Marketplace EQP API.</p>
+</script>

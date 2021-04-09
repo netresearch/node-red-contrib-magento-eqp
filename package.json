@@ -1,0 +1,42 @@
+{
+	"name": "node-red-contrib-magento-eqp",
+	"version": "1.0.0",
+	"description": "NodeRED module for interacting with the Magento Marketplace EQP API",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/netresearch/node-red-contrib-magento-eqp.git"
+	},
+	"author": "TheDevMinerTV <tobigames200@gmail.com>",
+	"license": "MIT",
+	"node-red": {
+		"nodes": {
+			"magento-eqp-config": "dist/magento-eqp-config.js",
+			"magento-eqp-callback-parser": "dist/magento-eqp-callback-parser.js",
+			"magento-eqp-register-callback": "dist/magento-eqp-register-callback.js"
+		}
+	},
+	"scripts": {
+		"build": "yarn build:lib",
+		"build:lib": "tsc",
+		"build:lib:dev": "tsc -w",
+		"lint": "eslint src --ext .ts,.html",
+		"prepack": "yarn build:lib && node copyAssets.js"
+	},
+	"dependencies": {
+		"@netresearch/node-magento-eqp": "^1.0.5",
+		"node-red": "^1.2.9",
+		"node-red-contrib-typescript-node": "^0.1.0",
+		"typescript": "^4.2.4"
+	},
+	"devDependencies": {
+		"@types/node": "8",
+		"@types/node-red": "0.20.2",
+		"@typescript-eslint/eslint-plugin": "^4.21.0",
+		"@typescript-eslint/parser": "^4.21.0",
+		"eslint": "^7.23.0",
+		"eslint-plugin-html": "^6.1.2"
+	},
+	"engines": {
+		"node": ">=8"
+	}
+}
