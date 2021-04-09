@@ -45,14 +45,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@netresearch/node-magento-eqp@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-1.0.5.tgz#78ce90ff7596f67eca063745194cfdee2c9334bc"
-  integrity sha512-O7mRqv75BV7e9C5FcaO4I/ScEOulsyUP5syvH6EO+Fxi9FkmwRfuuGZgnqayQ0CodyB+mIyfJAisbYZZ+mGWsw==
+"@netresearch/node-magento-eqp@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-1.0.6.tgz#9df063612f4bb33fac714ecc78f5923727bab6f2"
+  integrity sha512-SEcVBBqb0PI9X8paBEOQBqzJfb/uKDVHlv9iTEPIJAlg1BephG3u1bCy5yvQvHEFWO8hTNmBhjLul8mvRz2iWQ==
   dependencies:
     axios "^0.21.1"
     tslib "^2.1.0"
-    typedoc-default-themes-dark "^0.12.10"
 
 "@node-red/editor-api@1.2.9":
   version "1.2.9"
@@ -3153,11 +3152,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typedoc-default-themes-dark@^0.12.10:
-  version "0.12.10"
-  resolved "https://registry.yarnpkg.com/typedoc-default-themes-dark/-/typedoc-default-themes-dark-0.12.10.tgz#46a54dd8ef6e8d8c3db7eff1462ee052b41bdd8d"
-  integrity sha512-XZ1Eb9mrIxzbch7sk3vn7J8anD1aq2xRx4XWvyKweqxQlKFf1UmDOjNzCvSbDJWK5J+6Nwx4I+YNiJFK3eIBgw==
 
 typescript@^4.2.4:
   version "4.2.4"
