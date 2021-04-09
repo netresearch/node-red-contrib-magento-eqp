@@ -1,5 +1,5 @@
 {
-	"name": "node-red-contrib-magento-eqp",
+	"name": "@netresearch/node-red-contrib-magento-eqp",
 	"version": "1.0.0",
 	"description": "NodeRED module for interacting with the Magento Marketplace EQP API",
 	"repository": {
