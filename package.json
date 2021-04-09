@@ -1,7 +1,8 @@
 {
 	"name": "@netresearch/node-red-contrib-magento-eqp",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "NodeRED module for interacting with the Magento Marketplace EQP API",
+	"main": "dist/index.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/netresearch/node-red-contrib-magento-eqp.git"
@@ -16,11 +17,11 @@
 		}
 	},
 	"scripts": {
-		"build": "yarn build:lib",
+		"build": "yarn build:lib && node copyAssets.js",
 		"build:lib": "tsc",
 		"build:lib:dev": "tsc -w",
 		"lint": "eslint src --ext .ts,.html",
-		"prepack": "yarn build:lib && node copyAssets.js"
+		"prepack": "yarn build"
 	},
 	"dependencies": {
 		"@netresearch/node-magento-eqp": "^1.0.5",
