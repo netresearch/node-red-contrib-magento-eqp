@@ -2,4 +2,4 @@ src
 .*
 *.md
 tsconfig.json
-*.js
+copyAssets.js
