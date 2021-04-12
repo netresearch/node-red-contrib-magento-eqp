@@ -1,0 +1,81 @@
+[
+	{ "id": "f4d92134.a28bd", "type": "tab", "label": "Flow 1", "disabled": false, "info": "" },
+	{
+		"id": "90080bd6.b68508",
+		"type": "magento-eqp-callback-parser",
+		"z": "f4d92134.a28bd",
+		"name": "",
+		"config": "c44d79e9.62e4e8",
+		"x": 470,
+		"y": 100,
+		"wires": [["5a5b01b8.295b4"]]
+	},
+	{
+		"id": "3d5d2922.fc07a6",
+		"type": "http in",
+		"z": "f4d92134.a28bd",
+		"name": "",
+		"url": "/magento-eqp-callback",
+		"method": "post",
+		"upload": false,
+		"swaggerDoc": "",
+		"x": 160,
+		"y": 100,
+		"wires": [["90080bd6.b68508", "90220895.b1bbf8"]]
+	},
+	{
+		"id": "90220895.b1bbf8",
+		"type": "http response",
+		"z": "f4d92134.a28bd",
+		"name": "",
+		"statusCode": "",
+		"headers": {},
+		"x": 390,
+		"y": 140,
+		"wires": []
+	},
+	{
+		"id": "5a5b01b8.295b4",
+		"type": "debug",
+		"z": "f4d92134.a28bd",
+		"name": "",
+		"active": true,
+		"tosidebar": true,
+		"console": false,
+		"tostatus": false,
+		"complete": "false",
+		"statusVal": "",
+		"statusType": "auto",
+		"x": 730,
+		"y": 100,
+		"wires": []
+	},
+	{
+		"id": "6756a68c.66b928",
+		"type": "magento-eqp-register-callback",
+		"z": "f4d92134.a28bd",
+		"name": "",
+		"config": "c44d79e9.62e4e8",
+		"x": 470,
+		"y": 40,
+		"wires": [[]]
+	},
+	{
+		"id": "509739c5.3aae28",
+		"type": "inject",
+		"z": "f4d92134.a28bd",
+		"name": "",
+		"props": [{ "p": "payload" }],
+		"repeat": "",
+		"crontab": "",
+		"once": false,
+		"onceDelay": 0.1,
+		"topic": "",
+		"payload": "{\"url\":\"https://example.com/magento-eqp-callback\",\"username\":\"username\",\"password\":\"password\",\"name\":\"Example\"}",
+		"payloadType": "json",
+		"x": 90,
+		"y": 40,
+		"wires": [["6756a68c.66b928"]]
+	},
+	{ "id": "c44d79e9.62e4e8", "type": "magento-eqp-config", "environment": "production", "autoRefresh": true }
+]
