@@ -1,6 +1,6 @@
 {
 	"name": "@netresearch/node-red-contrib-magento-eqp",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "Node-RED module for parsing callbacks from the Magento Marketplace EQP API",
 	"main": "dist/index.js",
 	"repository": {
@@ -16,6 +16,9 @@
 			"magento-eqp-register-callback": "dist/magento-eqp-register-callback.js"
 		}
 	},
+	"keywords": [
+		"node-red"
+	],
 	"scripts": {
 		"build": "yarn build:lib && node copyAssets.js",
 		"build:lib": "tsc",
