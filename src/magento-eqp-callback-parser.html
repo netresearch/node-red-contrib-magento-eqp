@@ -31,4 +31,21 @@
 
 <script type="text/html" data-help-name="magento-eqp-callback-parser">
 	<p>A node to parse requests from a callback URL by the Magento Marketplace EQP API.</p>
+
+	<h4>Input</h4>
+	<p>
+		The incoming <code>msg.payload</code> should be either a
+		<a href="https://netresearch.github.io/node-magento-eqp/interfaces/malwarescancompleteevent.html">
+			<code>MalwareScanCompleteEvent</code>
+		</a>
+		or a
+		<a href="https://netresearch.github.io/node-magento-eqp/interfaces/eqpstatusupdateevent.html"><code>EQPStatusUpdateEvent</code></a> .
+	</p>
+
+	<h4>Output</h4>
+	<p>
+		The response (the return value of
+		<a href="https://netresearch.github.io/node-magento-eqp/classes/eqp.html#parsecallback"><code>EQP#parseCallback()</code></a> ) will be written to
+		<code>msg.payload</code>.
+	</p>
 </script>

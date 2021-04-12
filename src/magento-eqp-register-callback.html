@@ -31,4 +31,22 @@
 
 <script type="text/html" data-help-name="magento-eqp-register-callback">
 	<p>A node to register a callback URL on the Magento Marketplace EQP API.</p>
+
+	<h4>Input</h4>
+	<p>
+		The incoming <code>msg.payload</code> should look like this:
+
+		<ul>
+			<li>name</li>
+			<li>url</li>
+			<li>username</li>
+			<li>password</li>
+		</ul>
+	</p>
+
+	<h4>Output</h4>
+	<p>
+		The response (a <a href="https://netresearch.github.io/node-magento-eqp/interfaces/user.html"><code>User</code></a> object) will be
+		written to <code>msg.payload</code>.
+	</p>
 </script>
