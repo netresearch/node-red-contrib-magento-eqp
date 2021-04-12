@@ -19,7 +19,13 @@ class MagentoEQPCallbackParser extends Node {
 		const configNode = RED.nodes.getNode(config.config);
 
 		if (!configNode) {
-			throw new Error('config node not found');
+			this.status({
+				fill: 'red',
+				shape: 'ring',
+				text: `Configuration node not found`
+			});
+
+			return;
 		}
 
 		this.configNode = configNode as MagentoEQPConfig;
@@ -45,7 +51,7 @@ class MagentoEQPCallbackParser extends Node {
 				this.status({
 					fill: 'red',
 					shape: 'ring',
-					text: JSON.stringify(error.response ? error.response.data : error.response)
+					text: error.response ? JSON.stringify(error.response.data) : error
 				});
 			}
 		});

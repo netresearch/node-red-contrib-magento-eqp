@@ -29,7 +29,13 @@ export class MagentoEQPConfig extends RedNode {
 		this.createNode(config);
 
 		if (!(this.credentials.appId && this.credentials.appSecret)) {
-			throw new Error('App ID or secret missing');
+			this.status({
+				fill: 'red',
+				shape: 'ring',
+				text: `App ID or secret missing`
+			});
+
+			return;
 		}
 
 		this.appId = this.credentials.appId;
@@ -37,28 +43,34 @@ export class MagentoEQPConfig extends RedNode {
 		this.environment = config.environment;
 		this.autoRefresh = config.autoRefresh;
 
-		console.group('Magento EQP Configuration:');
-
-		console.log(`App ID       ${this.credentials.appId}`);
-		console.log(
-			`App Secret   ${'*'.repeat(this.credentials.appSecret.length)}`
-		);
-		console.log(`Environment  ${config.environment ?? 'production'}`);
-		console.log(`Auto Refresh ${config.autoRefresh ?? true}`);
-
-		console.groupEnd();
-
 		this.eqp = new EQP({
 			environment: config.environment ?? 'production',
 			autoRefresh: config.autoRefresh ?? true
 		});
 
-		this.log('Authenticating...');
+		this.status({
+			fill: 'green',
+			shape: 'ring',
+			text: 'Authenticating...'
+		});
 
 		this.eqp
 			.authenticate(this.credentials.appId, this.credentials.appSecret)
 			.then(() => {
-				this.log('Authenticated');
+				this.status({
+					fill: 'green',
+					shape: 'ring',
+					text: 'Authenticated'
+				});
+			})
+			.catch((e) => {
+				this.status({
+					fill: 'red',
+					shape: 'ring',
+					text: e.response ? JSON.stringify(e.response.data) : e
+				});
+
+				return;
 			});
 	}
 }

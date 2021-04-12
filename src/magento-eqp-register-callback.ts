@@ -18,14 +18,26 @@ class MagentoEQPRegisterCallback extends Node {
 		const configNode = RED.nodes.getNode(config.config);
 
 		if (!configNode) {
-			throw new Error('config node not found');
+			this.status({
+				fill: 'red',
+				shape: 'ring',
+				text: `Configuration node not found`
+			});
+
+			return;
 		}
 
 		this.configNode = configNode as MagentoEQPConfig;
 
 		this.on('input', async (msg: Message) => {
 			if (!this.configNode) {
-				throw new Error('configuration node not set');
+				this.status({
+					fill: 'red',
+					shape: 'ring',
+					text: `Configuration node not found`
+				});
+
+				return;
 			}
 
 			const { name, password, url, username } = msg.payload as Record<string, string>;
@@ -42,7 +54,7 @@ class MagentoEQPRegisterCallback extends Node {
 				this.status({
 					fill: 'red',
 					shape: 'ring',
-					text: JSON.stringify(error.response ? error.response.data : error.response)
+					text: error.response ? JSON.stringify(error.response.data) : error
 				});
 			}
 		});
