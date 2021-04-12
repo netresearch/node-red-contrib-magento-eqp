@@ -25,9 +25,7 @@
 	},
 	"dependencies": {
 		"@netresearch/node-magento-eqp": "^1.0.6",
-		"node-red": "^1.2.9",
-		"node-red-contrib-typescript-node": "^0.1.0",
-		"typescript": "^4.2.4"
+		"node-red-contrib-typescript-node": "^0.1.0"
 	},
 	"devDependencies": {
 		"@types/node": "8",
@@ -35,7 +33,8 @@
 		"@typescript-eslint/eslint-plugin": "^4.21.0",
 		"@typescript-eslint/parser": "^4.21.0",
 		"eslint": "^7.23.0",
-		"eslint-plugin-html": "^6.1.2"
+		"eslint-plugin-html": "^6.1.2",
+		"typescript": "^4.2.4"
 	},
 	"engines": {
 		"node": ">=8"
