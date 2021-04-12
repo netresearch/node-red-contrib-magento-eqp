@@ -29,13 +29,7 @@ export class MagentoEQPConfig extends RedNode {
 		this.createNode(config);
 
 		if (!(this.credentials.appId && this.credentials.appSecret)) {
-			this.status({
-				fill: 'red',
-				shape: 'ring',
-				text: `App ID or secret missing`
-			});
-
-			return;
+			throw new Error('App ID or secret missing');
 		}
 
 		this.appId = this.credentials.appId;
