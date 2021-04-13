@@ -20,9 +20,7 @@
 		"node-red"
 	],
 	"scripts": {
-		"build": "yarn build:lib && node copyAssets.js",
-		"build:lib": "tsc",
-		"build:lib:dev": "tsc -w",
+		"build": "node copyAssets.js",
 		"lint": "eslint src --ext .ts,.html",
 		"prepack": "yarn build"
 	},
