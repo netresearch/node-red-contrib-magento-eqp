@@ -19,7 +19,7 @@
 
 > Node-RED module to parse Magento EQP callbacks
 
-The primary focus of this package is to provide a simple  module to parse callbacks from the [Magento Marketplace EQP API](https://devdocs.magento.com/marketplace/eqp/v1/api.html).
+The primary focus of this package is to provide a simple module to parse callbacks from the [Magento Marketplace EQP API](https://devdocs.magento.com/marketplace/eqp/v1/api.html).
 
 ## Install
 
@@ -31,13 +31,13 @@ npm install @netresearch/node-red-contrib-magento-eqp
 
 ## Features
 
-* Parse callbacks from `http in` nodes
-* Register callback URLs programmatically
-* Configuration node with secret
+-   Parse callbacks from `http in` nodes
+-   Register callback URLs programmatically
+-   Configuration node with secret
 
 ## Example Flow
 
-The example flow is located in [src/flow.json](https://github.com/netresearch/node-red-contrib-magento-eqp/blob/master/src/flow.json)
+The example flow is located in [example/flow.json](https://github.com/netresearch/node-red-contrib-magento-eqp/blob/master/example/flow.json)
 
 ![Example Usage](https://i.imgur.com/xGD2WvE.png)
 
@@ -45,7 +45,7 @@ The example flow is located in [src/flow.json](https://github.com/netresearch/no
 
 👤 **TheDevMinerTV <tobigames200@gmail.com>**
 
-- Github: [@TheDevMinerTV](https://github.com/TheDevMinerTV)
+-   Github: [@TheDevMinerTV](https://github.com/TheDevMinerTV)
 
 ## 🤝 Contributing
 
