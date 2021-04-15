@@ -4,7 +4,8 @@
 	RED.nodes.registerType('magento-eqp-config', {
 		category: 'config',
 		defaults: {
-			environment: { value: 'production' },
+			name: { value: '' },
+			environment: { value: 'production', required: true },
 			autoRefresh: { value: true }
 		},
 		credentials: {
@@ -12,12 +13,17 @@
 			appSecret: { type: 'password' }
 		},
 		label: function () {
-			return this.environment.toUpperCase();
+			return `${this.name} | ${this.environment.toUpperCase()}`;
 		}
 	});
 </script>
 
 <script type="text/html" data-template-name="magento-eqp-config">
+	<div class="form-row">
+		<label for="node-config-input-name"><i class="icon-tag" />Name</label>
+		<input type="text" id="node-config-input-name" placeholder="Name" />
+	</div>
+
 	<div class="form-row">
 		<label for="node-config-input-environment"><i class="icon-tag" />Environment</label>
 		<select id="node-config-input-environment">
