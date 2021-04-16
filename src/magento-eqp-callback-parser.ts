@@ -1,4 +1,4 @@
-import { EQPStatusUpdateEvent, MalwareScanCompleteEvent } from '@netresearch/node-magento-eqp/dist/types';
+import { EQPStatusUpdateEvent, MalwareScanCompleteEvent } from '@netresearch/node-magento-eqp';
 import { NodeProperties, Red } from 'node-red';
 import { Node } from 'node-red-contrib-typescript-node';
 import { Message } from './common';
@@ -44,7 +44,7 @@ class MagentoEQPCallbackParser extends Node {
 
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				msg.payload = await this.configNode.eqp.parseCallback(payload);
+				msg.payload = await this.configNode.eqp.callbackService.parseCallback(payload);
 
 				this.send(msg);
 			} catch (error) {

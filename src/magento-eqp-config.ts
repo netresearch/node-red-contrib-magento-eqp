@@ -39,33 +39,10 @@ export class MagentoEQPConfig extends RedNode {
 
 		this.eqp = new EQP({
 			environment: config.environment ?? 'production',
-			autoRefresh: config.autoRefresh ?? true
+			autoRefresh: config.autoRefresh ?? true,
+			appId: this.appId,
+			appSecret: this.appSecret
 		});
-
-		this.status({
-			fill: 'green',
-			shape: 'ring',
-			text: 'Authenticating...'
-		});
-
-		this.eqp
-			.authenticate(this.credentials.appId, this.credentials.appSecret)
-			.then(() => {
-				this.status({
-					fill: 'green',
-					shape: 'ring',
-					text: 'Authenticated'
-				});
-			})
-			.catch((e) => {
-				this.status({
-					fill: 'red',
-					shape: 'ring',
-					text: e.response ? JSON.stringify(e.response.data) : e
-				});
-
-				return;
-			});
 	}
 }
 

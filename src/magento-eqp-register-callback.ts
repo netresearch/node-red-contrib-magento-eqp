@@ -47,7 +47,7 @@ class MagentoEQPRegisterCallback extends Node {
 					throw new Error('username, name, password or url missing');
 				}
 
-				msg.payload = await this.configNode.eqp.registerCallback(name, url, username, password);
+				msg.payload = await this.configNode.eqp.callbackService.registerCallback(name, url, username, password);
 
 				this.send(msg);
 			} catch (error) {
