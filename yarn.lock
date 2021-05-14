@@ -38,10 +38,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@netresearch/node-magento-eqp@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-2.0.2.tgz#3e5964b887a27c658ebe1b53f26f3c2f1961afa9"
-  integrity sha512-9VO84V7tF9bJhjqJQIhZ+e2UNUjWn3Nf7nJdG67AYCiN552uTZv1MU6phbqOOsBNTfYrDmxpeoSrLQ15zflHzw==
+"@netresearch/node-magento-eqp@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-2.0.3.tgz#3a4bc8b46ea509d29981b2dae18fc16a54cf38af"
+  integrity sha512-6H6P4OFTerxS0OWBTThXfW1SkoEzI3fSOEMU9lWySY9Xp4ZsrkjHlMAXa6SKBMYxfzi8O4zYaYY1BvKvbo/10g==
   dependencies:
     axios "^0.21.1"
     tslib "^2.1.0"
