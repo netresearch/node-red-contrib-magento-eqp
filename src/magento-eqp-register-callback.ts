@@ -50,11 +50,13 @@ class MagentoEQPRegisterCallback extends Node {
 				msg.payload = await this.configNode.eqp.callbackService.registerCallback(name, url, username, password);
 
 				this.send(msg);
-			} catch (error) {
+			} catch (err) {
+				const error = err as Error
+
 				this.status({
 					fill: 'red',
 					shape: 'ring',
-					text: error.response ? JSON.stringify(error.response.data) : error
+					text: error.toString()
 				});
 			}
 		});
