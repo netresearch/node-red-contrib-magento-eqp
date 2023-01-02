@@ -48,7 +48,7 @@ class MagentoEQPCallbackParser extends Node {
 
 				this.send(msg);
 			} catch (err) {
-				const error = err as Error
+				const error = err as Error;
 
 				this.status({
 					fill: 'red',
