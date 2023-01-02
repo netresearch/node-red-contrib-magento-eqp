@@ -3,30 +3,30 @@
 name: 📦☁️ Release
 
 on:
-    workflow_dispatch:
-    push:
-        branches: [master]
+  workflow_dispatch:
+  push:
+    branches: [master]
 
 jobs:
-    release:
-        name: 📦☁️ Release
-        runs-on: ubuntu-18.04
-        steps:
-            - uses: actions/checkout@v2
+  release:
+    name: 📦☁️ Release
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
 
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-                  registry-url: 'https://registry.npmjs.org'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
-            - name: ⚡ Install dependencies
-              run: yarn install --frozen-lockfile
+      - name: ⚡ Install dependencies
+        run: yarn install --frozen-lockfile
 
-            - name: 📦 Package
-              run: yarn pack --filename=package.tgz
+      - name: 📦 Package
+        run: yarn pack --filename=package.tgz
 
-            - name: 🚀 Upload package as an artifact
-              uses: actions/upload-artifact@v2
-              with:
-                  name: dist
-                  path: package.tgz
+      - name: 🚀 Upload package as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: package.tgz

@@ -1,0 +1,13 @@
+{
+	"semi": true,
+	"trailingComma": "none",
+	"arrowParens": "always",
+	"bracketSpacing": true,
+	"singleQuote": true,
+	"printWidth": 160,
+	"useTabs": true,
+	"endOfLine": "lf",
+	"tabWidth": 4,
+	"editorconfig": true,
+	"overrides": [{ "files": ["*.yml"], "options": { "tabWidth": 2, "useTabs": false } }]
+}
