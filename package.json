@@ -1,6 +1,6 @@
 {
 	"name": "@netresearch/node-red-contrib-magento-eqp",
-	"version": "1.0.14",
+	"version": "2.0.0",
 	"description": "Node-RED module for parsing callbacks from the Magento Marketplace EQP API",
 	"main": "dist/index.js",
 	"repository": {
@@ -40,6 +40,6 @@
 		"typescript": "^4.9.4"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=12"
 	}
 }
