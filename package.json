@@ -31,7 +31,7 @@
 		"node-red-contrib-typescript-node": "^0.1.0"
 	},
 	"devDependencies": {
-		"@types/node": "^12.20.55",
+		"@types/node": "^18.15.11",
 		"@types/node-red": "0.20.2",
 		"@typescript-eslint/eslint-plugin": "^5.55.0",
 		"@typescript-eslint/parser": "^5.52.0",
