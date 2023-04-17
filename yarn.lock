@@ -87,10 +87,10 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
-"@types/node-red@0.20.2":
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/@types/node-red/-/node-red-0.20.2.tgz#2c162645e4993b02e3ffb08289a861cf49876247"
-  integrity sha512-nDAHtWDzqD5H2TLYiwj2qW39ZOCjwoJMeSJhSDsDhgoBd0E9RCnlLjjdt12b9oiRScr1lfKRncPt/mf2ngLL4Q==
+"@types/node-red@0.20.3":
+  version "0.20.3"
+  resolved "https://registry.yarnpkg.com/@types/node-red/-/node-red-0.20.3.tgz#34f3cb2b13044833fac8d41e51604b9d458f1030"
+  integrity sha512-Nu8ifg4P8Vhi6nyREjzKj6KX1MVrHoW1GNea9kosX75qbXTbjXjgNgdzB9M+Z/pzxKEZ7t0l4n0lFPvNrzRF1g==
   dependencies:
     "@types/node" "*"
 
