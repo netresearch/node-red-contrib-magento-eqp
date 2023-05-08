@@ -54,11 +54,11 @@
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
 "@netresearch/node-magento-eqp@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-3.0.2.tgz#8822b417823c6450604a943555d2133a50c3af76"
-  integrity sha512-UqYsWyiukvNjOUVcyETVPIT2eKk7AjOY9OjxrqRUInsRXVVId+c5ly2n6FjK1cEfHgSJUQGhayblIUIuKZzmsQ==
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-3.0.3.tgz#e47329f9a6d8573ded8aa2a698c0a84ea6b66662"
+  integrity sha512-q6a9w8bZBMgmYjPkdtDI4FiyiNljnHFRvtnmPn5CQ4mT/s9nptt2Bz9IcUGQhm4O8XJCt53tS4EezA7F+WqwQw==
   dependencies:
-    axios "1.2.1"
+    axios "1.4.0"
     tslib "^2.4.1"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -240,10 +240,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.1.tgz#44cf04a3c9f0c2252ebd85975361c026cb9f864a"
-  integrity sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A==
+axios@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.4.0.tgz#38a7bf1224cd308de271146038b551d725f0be1f"
+  integrity sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
