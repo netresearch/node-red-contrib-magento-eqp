@@ -43,7 +43,7 @@ The example flow is located in [example/flow.json](https://github.com/netresearc
 
 ## Author
 
-👤 **TheDevMinerTV <tobigames200@gmail.com>**
+👤 **DevMiner <devminer@devminer.xyz>**
 
 -   Github: [@TheDevMinerTV](https://github.com/TheDevMinerTV)
 
