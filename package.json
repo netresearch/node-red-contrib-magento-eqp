@@ -28,6 +28,7 @@
 	},
 	"dependencies": {
 		"@netresearch/node-magento-eqp": "^3.0.2",
+		"axios": "^1.4.0",
 		"node-red-contrib-typescript-node": "^0.1.0"
 	},
 	"devDependencies": {

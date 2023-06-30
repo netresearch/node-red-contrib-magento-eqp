@@ -1,4 +1,5 @@
 import { EQPStatusUpdateEvent, MalwareScanCompleteEvent } from '@netresearch/node-magento-eqp';
+import { AxiosError } from 'axios';
 import { NodeProperties, Red } from 'node-red';
 import { Node } from 'node-red-contrib-typescript-node';
 import { Message } from './common';
@@ -46,7 +47,7 @@ class MagentoEQPCallbackParser extends Node {
 				// @ts-ignore
 				msg.payload = await this.configNode.eqp.callbackService.parseCallback(payload);
 
-				this.send(msg);
+				this.send([msg, null]);
 			} catch (err) {
 				const error = err as Error;
 
@@ -55,6 +56,10 @@ class MagentoEQPCallbackParser extends Node {
 					shape: 'ring',
 					text: error.toString()
 				});
+
+				const httpResponse = err instanceof AxiosError && !!err.response ? err.response.data : null;
+
+				this.send([null, { ...error, httpResponse }]);
 			}
 		});
 	}
