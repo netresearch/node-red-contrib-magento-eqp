@@ -27,18 +27,18 @@
 		"prepack": "yarn build"
 	},
 	"dependencies": {
-		"@netresearch/node-magento-eqp": "^3.0.2",
+		"@netresearch/node-magento-eqp": "^4.0.1",
 		"axios": "^1.4.0",
 		"node-red-contrib-typescript-node": "^0.1.0"
 	},
 	"devDependencies": {
 		"@types/node": "^12.20.55",
 		"@types/node-red": "0.20.3",
-		"@typescript-eslint/eslint-plugin": "^5.55.0",
-		"@typescript-eslint/parser": "^5.52.0",
-		"eslint": "^8.35.0",
+		"@typescript-eslint/eslint-plugin": "^6.1.0",
+		"@typescript-eslint/parser": "^6.1.0",
+		"eslint": "^8.45.0",
 		"eslint-plugin-html": "^7.1.0",
-		"typescript": "^5.0.4"
+		"typescript": "^5.1.6"
 	},
 	"engines": {
 		"node": ">=12"
