@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "https://github.com/netresearch/node-red-contrib-magento-eqp.git"
 	},
-	"author": "TheDevMinerTV <tobigames200@gmail.com>",
+	"author": "DevMiner <devminer@devminer.xyz>",
 	"license": "MIT",
 	"node-red": {
 		"nodes": {
