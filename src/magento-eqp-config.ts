@@ -21,7 +21,6 @@ export class MagentoEQPConfig extends RedNode {
 	readonly appId: string;
 	readonly appSecret: string;
 	readonly environment: Environment;
-	readonly autoRefresh: boolean;
 
 	constructor(config: Config, RED: Red) {
 		super(RED);
@@ -35,7 +34,6 @@ export class MagentoEQPConfig extends RedNode {
 		this.appId = this.credentials.appId;
 		this.appSecret = this.credentials.appSecret;
 		this.environment = config.environment;
-		this.autoRefresh = config.autoRefresh;
 
 		this.eqp = new EQP({
 			environment: config.environment ?? 'production',
