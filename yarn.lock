@@ -64,9 +64,9 @@
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
 "@netresearch/node-magento-eqp@^4.0.1":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-4.0.3.tgz#dc38e1525d90a52298ee8bb09d489b8b7493df2c"
-  integrity sha512-Evj2EtJ2044L/1kBmbCZWjPFd3ki9cvEOUlGdVk/dGOpVuW2rkGeW/Qiolg7vLrywCI9qnYFeTWPENkibSYOsg==
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-4.0.4.tgz#3ca6552b765adb313aa8a508f899b7890df732f7"
+  integrity sha512-Z3xiGukQw/9ltFIH9v/DiOoFbL44ADO2MXg/DrYc6hWfDTTL3jMgF55+Y051O3Tf1Tb4iMeBrPS0VfVT3Gq2hA==
   dependencies:
     axios "1.5.0"
     tslib "^2.6.0"
