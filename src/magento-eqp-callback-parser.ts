@@ -50,22 +50,23 @@ class MagentoEQPCallbackParser extends Node {
 				this.send([msg, null]);
 			} catch (err) {
 				const error = err as Error;
+				const httpResponse = err instanceof AxiosError && !!err.response ? err.response.data : null;
+				const httpError = httpResponse ? JSON.stringify(httpResponse) : '';
+				const errorString = `${error}: ${httpError}`;
 
 				this.status({
 					fill: 'red',
 					shape: 'ring',
-					text: error.toString()
+					text: errorString
 				});
 
-				const httpResponse = err instanceof AxiosError && !!err.response ? err.response.data : null;
-
-				this.send([null, { ...error, httpResponse }]);
+				this.send([null, { ...error, httpResponse, payload: errorString }]);
 			}
 		});
 	}
 }
 
-module.exports = function (RED: Red) {
+module.exports = function(RED: Red) {
 	class MagentoEQPCallbackParserWrapper extends MagentoEQPCallbackParser {
 		constructor(config: Config) {
 			super(config, RED);
