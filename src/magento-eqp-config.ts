@@ -2,7 +2,7 @@ import { EQP } from '@netresearch/node-magento-eqp';
 import { NodeProperties, Red } from 'node-red';
 import { Node } from 'node-red-contrib-typescript-node';
 
-type Environment = 'production' | 'staging';
+type Environment = 'production' | 'sandbox';
 
 class RedNode extends Node {
 	credentials: Record<string, string> = {};
