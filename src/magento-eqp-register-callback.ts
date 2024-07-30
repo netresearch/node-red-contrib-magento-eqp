@@ -1,16 +1,16 @@
-import { NodeProperties, Red } from 'node-red';
+import { EditorNodeProperties, NodeRedApp } from 'node-red';
 import { Node } from 'node-red-contrib-typescript-node';
 import { Message } from './common';
 import { MagentoEQPConfig } from './magento-eqp-config';
 
-interface Config extends NodeProperties {
+interface Config extends EditorNodeProperties {
 	config: string;
 }
 
 class MagentoEQPRegisterCallback extends Node {
 	protected configNode?: MagentoEQPConfig;
 
-	constructor(config: Config, RED: Red) {
+	constructor(config: Config, RED: NodeRedApp) {
 		super(RED);
 
 		this.createNode(config);
@@ -63,7 +63,7 @@ class MagentoEQPRegisterCallback extends Node {
 	}
 }
 
-module.exports = function (RED: Red) {
+module.exports = function (RED: NodeRedApp) {
 	class MagentoEQPRegisterCallbackWrapper extends MagentoEQPRegisterCallback {
 		constructor(config: Config) {
 			super(config, RED);

@@ -1,5 +1,5 @@
 import { EQP } from '@netresearch/node-magento-eqp';
-import { NodeProperties, Red } from 'node-red';
+import { EditorNodeProperties, NodeRedApp } from 'node-red';
 import { Node } from 'node-red-contrib-typescript-node';
 
 type Environment = 'production' | 'sandbox';
@@ -8,7 +8,7 @@ class RedNode extends Node {
 	credentials: Record<string, string> = {};
 }
 
-interface Config extends NodeProperties {
+interface Config extends EditorNodeProperties {
 	appId: string;
 	appSecret: string;
 	environment: Environment;
@@ -22,7 +22,7 @@ export class MagentoEQPConfig extends RedNode {
 	readonly appSecret: string;
 	readonly environment: Environment;
 
-	constructor(config: Config, RED: Red) {
+	constructor(config: Config, RED: NodeRedApp) {
 		super(RED);
 
 		this.createNode(config);
@@ -44,7 +44,7 @@ export class MagentoEQPConfig extends RedNode {
 	}
 }
 
-module.exports = function (RED: Red) {
+module.exports = function (RED: NodeRedApp) {
 	class MagentoEQPConfigWrapper extends MagentoEQPConfig {
 		constructor(config: Config) {
 			super(config, RED);
