@@ -7,9 +7,6 @@ export default tseslint.config(
 	},
 	...tseslint.configs.recommended,
 	{
-		files: ["src/**/*.ts"],
-	},
-	{
 		files: ["src/**/*.html"],
 		plugins: { html },
 	},
