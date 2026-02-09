@@ -23,7 +23,7 @@
 		"build": "yarn build:lib && node copyAssets.js",
 		"build:lib": "tsc",
 		"build:lib:dev": "tsc -w",
-		"lint": "eslint src --ext .ts,.html",
+		"lint": "eslint src/",
 		"prepack": "yarn build"
 	},
 	"dependencies": {
@@ -34,11 +34,10 @@
 	"devDependencies": {
 		"@types/node": "^24.0.0",
 		"@types/node-red": "0.20.7",
-		"@typescript-eslint/eslint-plugin": "^8.0.0",
-		"@typescript-eslint/parser": "^8.0.0",
-		"eslint": "^8.45.0",
+		"eslint": "^10.0.0",
 		"eslint-plugin-html": "^8.0.0",
-		"typescript": "^5.1.6"
+		"typescript": "^5.1.6",
+		"typescript-eslint": "^8.0.0"
 	},
 	"engines": {
 		"node": ">=12"
