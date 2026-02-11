@@ -85,7 +85,7 @@
   dependencies:
     "@isaacs/balanced-match" "^4.0.1"
 
-"@netresearch/node-magento-eqp@^4.0.1":
+"@netresearch/node-magento-eqp@^4.0.8":
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/@netresearch/node-magento-eqp/-/node-magento-eqp-4.0.8.tgz#d3305e979a4bab082001d26f3ae86a0f4189914f"
   integrity sha512-dSjxs3RhiCUjU9Y7OfItjLnL5alTfqxz27wu0g9x2Pc9omVefHchgShtqKunGU48T7pu2J0pL0T4c5Yj8bj6eg==
@@ -259,7 +259,7 @@ axios@1.12.2:
     form-data "^4.0.4"
     proxy-from-env "^1.1.0"
 
-axios@^1.4.0:
+axios@^1.13.5:
   version "1.13.5"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.13.5.tgz#5e464688fa127e11a660a2c49441c009f6567a43"
   integrity sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==

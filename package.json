@@ -27,8 +27,8 @@
 		"prepack": "yarn build"
 	},
 	"dependencies": {
-		"@netresearch/node-magento-eqp": "^4.0.1",
-		"axios": "^1.4.0",
+		"@netresearch/node-magento-eqp": "^4.0.8",
+		"axios": "^1.13.5",
 		"node-red-contrib-typescript-node": "^0.1.0"
 	},
 	"devDependencies": {
