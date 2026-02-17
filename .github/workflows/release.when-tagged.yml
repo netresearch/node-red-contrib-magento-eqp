@@ -1,4 +1,10 @@
-# https://gist.github.com/paullessing/d706c8af51faca68c6ba0f9f9bae4e4b#file-release-when-tagged-yml
+# Publish and create GitHub Release when a signed tag is pushed.
+# Triggered by: git tag -s vX.Y.Z -m "vX.Y.Z" && git push origin vX.Y.Z
+# Also available via workflow_dispatch for manual reruns.
+#
+# npm authentication uses OIDC trusted publishing (no NPM_TOKEN needed).
+# Setup: https://www.npmjs.com/package/@netresearch/node-red-contrib-magento-eqp/access
+# -> Trusted Publisher -> GitHub Actions -> workflow: release.when-tagged.yml
 
 name: 📦☁️ Release
 
@@ -8,9 +14,17 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+  packages: write
+  id-token: write # OIDC trusted publishing to npm
+
+env:
+  HUSKY: '0'
+
 jobs:
-  build:
-    name: 📦☁️ Release
+  release:
+    name: 📦☁️ Publish and release
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -25,10 +39,11 @@ jobs:
       - name: ⚡ Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: ☁️ Publish to NPM
-        run: yarn publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: 🔨 Build
+        run: yarn build:lib
+
+      - name: ☁️ Publish to NPM (OIDC + provenance)
+        run: npm publish --access=public --provenance
 
       - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
@@ -37,6 +52,12 @@ jobs:
           scope: '@netresearch'
 
       - name: ☁️ Publish to GitHub Package Registry
-        run: yarn publish --access=public
+        run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📋 Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "$TAG" --generate-notes

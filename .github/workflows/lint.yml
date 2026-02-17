@@ -6,6 +6,16 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  HUSKY: '0'
+
 jobs:
   build:
     name: 🔨 Build
@@ -38,5 +48,3 @@ jobs:
 
       - name: 🔎 Lint
         run: yarn lint
-        env:
-          ESLINT_USE_FLAT_CONFIG: false

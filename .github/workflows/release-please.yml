@@ -1,0 +1,22 @@
+# Creates version-bump PRs with changelogs from conventional commits.
+# Does NOT create releases or tags -- those are signed locally and pushed
+# manually. The signed tag triggers release.when-tagged.yml for publishing.
+name: Release Please
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    name: 📋 Release Please
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
+        with:
+          release-type: node
+          skip-github-release: true

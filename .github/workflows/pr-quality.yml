@@ -1,0 +1,59 @@
+# Solo-maintainer auto-approve: approves PRs from repo collaborators and
+# trusted bots so that required_approving_review_count >= 1 is satisfied
+# without manual review.
+#
+# For bot PRs (github-actions[bot]), GITHUB_TOKEN can't self-approve.
+# Set an APPROVE_TOKEN secret (PAT with repo scope) to approve bot PRs.
+# Without APPROVE_TOKEN, bot PRs require manual approval.
+#
+# SECURITY: This workflow uses pull_request_target which runs with base branch
+# permissions. NEVER add an actions/checkout step here.
+
+name: PR Quality Gates
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  auto-approve:
+    name: Auto-approve (collaborators)
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
+        with:
+          egress-policy: audit
+
+      - name: Check author permission
+        id: check-permission
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Bots are trusted if they match known bot accounts
+          if [[ "$PR_AUTHOR" == "dependabot[bot]" || "$PR_AUTHOR" == "renovate[bot]" || "$PR_AUTHOR" == "github-actions[bot]" ]]; then
+            echo "permission=bot" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          PERMISSION=$(gh api "repos/$REPO/collaborators/$PR_AUTHOR/permission" --jq '.permission' 2>/dev/null || echo "none")
+          echo "permission=$PERMISSION" >> "$GITHUB_OUTPUT"
+
+      - name: Auto-approve (collaborator)
+        if: steps.check-permission.outputs.permission == 'admin' || steps.check-permission.outputs.permission == 'write'
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr review --approve "$PR_URL"
+
+      - name: Auto-approve (bot via APPROVE_TOKEN)
+        if: steps.check-permission.outputs.permission == 'bot'
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.APPROVE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: gh pr review --approve "$PR_URL" || true
