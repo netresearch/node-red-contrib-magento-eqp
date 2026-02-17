@@ -4,7 +4,7 @@
     <img alt="Version" src="https://img.shields.io/npm/v/@netresearch/node-red-contrib-magento-eqp?style=for-the-badge" />
   </a>
 
-  <a href="https://github.com/netresearch/node-red-contrib-magento-eqp/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/netresearch/node-red-contrib-magento-eqp/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/npm/l/@netresearch/node-red-contrib-magento-eqp.svg?style=for-the-badge" />
   </a>
 
@@ -31,13 +31,13 @@ npm install @netresearch/node-red-contrib-magento-eqp
 
 ## Features
 
--   Parse callbacks from `http in` nodes
--   Register callback URLs programmatically
--   Configuration node with secret
+- Parse callbacks from `http in` nodes
+- Register callback URLs programmatically
+- Configuration node with secret
 
 ## Example Flow
 
-The example flow is located in [example/flow.json](https://github.com/netresearch/node-red-contrib-magento-eqp/blob/master/example/flow.json)
+The example flow is located in [example/flow.json](https://github.com/netresearch/node-red-contrib-magento-eqp/blob/main/example/flow.json)
 
 ![Example Usage](https://i.imgur.com/xGD2WvE.png)
 
@@ -45,11 +45,11 @@ The example flow is located in [example/flow.json](https://github.com/netresearc
 
 👤 **DevMiner <devminer@devminer.xyz>**
 
--   Github: [@TheDevMinerTV](https://github.com/TheDevMinerTV)
+- Github: [@TheDevMinerTV](https://github.com/TheDevMinerTV)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/netresearch/node-magento-eqp/issues). You can also take a look at the [contributing guide](https://github.com/netresearch/node-magento-eqp/blob/master/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/netresearch/node-magento-eqp/issues). You can also take a look at the [contributing guide](https://github.com/netresearch/node-magento-eqp/blob/main/CONTRIBUTING.md).
 
 ## Show your support
 
