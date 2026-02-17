@@ -28,13 +28,12 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
-		"@netresearch/node-magento-eqp": "^5.0.0",
-		"node-red-contrib-typescript-node": "^0.1.0"
+		"@netresearch/node-magento-eqp": "^5.0.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@types/node": "^24.0.0",
-		"@types/node-red": "0.20.7",
+		"@types/node-red": "^1.3.5",
 		"eslint": "^10.0.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-html": "^8.0.0",
