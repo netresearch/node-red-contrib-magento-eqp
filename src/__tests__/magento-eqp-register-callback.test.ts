@@ -44,7 +44,7 @@ describe('magento-eqp-register-callback', () => {
 	});
 
 	describe('input handling', () => {
-		let configNode: Record<string, unknown>;
+		let configNode: { eqp: { callbackService: { registerCallback: ReturnType<typeof vi.fn> } } };
 		let node: MockNode;
 
 		beforeEach(() => {
@@ -78,10 +78,7 @@ describe('magento-eqp-register-callback', () => {
 			node.emit('input', msg);
 			await vi.waitFor(() => expect(node.send).toHaveBeenCalled());
 
-			const eqp = configNode.eqp as {
-				callbackService: { registerCallback: ReturnType<typeof vi.fn> };
-			};
-			expect(eqp.callbackService.registerCallback).toHaveBeenCalledWith('My CB', 'https://example.com', 'admin', 'pass');
+			expect(configNode.eqp.callbackService.registerCallback).toHaveBeenCalledWith('My CB', 'https://example.com', 'admin', 'pass');
 			expect(node.send).toHaveBeenCalledWith(
 				expect.objectContaining({
 					payload: { mage_id: 'MAG123' }
@@ -142,10 +139,7 @@ describe('magento-eqp-register-callback', () => {
 		});
 
 		it('should set error status when API call fails', async () => {
-			const eqp = configNode.eqp as {
-				callbackService: { registerCallback: ReturnType<typeof vi.fn> };
-			};
-			eqp.callbackService.registerCallback.mockRejectedValue(new Error('API error'));
+			configNode.eqp.callbackService.registerCallback.mockRejectedValue(new Error('API error'));
 
 			const node = await setupNode();
 			const msg = {

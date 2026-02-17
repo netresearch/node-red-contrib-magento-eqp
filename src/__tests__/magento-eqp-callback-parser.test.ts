@@ -72,7 +72,7 @@ describe('magento-eqp-callback-parser', () => {
 	});
 
 	describe('input handling', () => {
-		let configNode: Record<string, unknown>;
+		let configNode: { eqp: { callbackService: { parseCallback: ReturnType<typeof vi.fn> } } };
 		let node: MockNode;
 
 		beforeEach(() => {
@@ -94,11 +94,7 @@ describe('magento-eqp-callback-parser', () => {
 
 		it('should handle eqp_status_update event', async () => {
 			const parsedResult = { submission: {}, status: 'approved', flow: 'technical' };
-			(
-				configNode.eqp as Record<string, unknown> & {
-					callbackService: { parseCallback: ReturnType<typeof vi.fn> };
-				}
-			).callbackService.parseCallback.mockResolvedValue(parsedResult);
+			configNode.eqp.callbackService.parseCallback.mockResolvedValue(parsedResult);
 
 			const node = await setupNode();
 			const msg = {
@@ -121,11 +117,7 @@ describe('magento-eqp-callback-parser', () => {
 
 		it('should handle malware_scan_complete event', async () => {
 			const parsedResult = { file: {}, submissions: [], result: 'pass' };
-			(
-				configNode.eqp as Record<string, unknown> & {
-					callbackService: { parseCallback: ReturnType<typeof vi.fn> };
-				}
-			).callbackService.parseCallback.mockResolvedValue(parsedResult);
+			configNode.eqp.callbackService.parseCallback.mockResolvedValue(parsedResult);
 
 			const node = await setupNode();
 			const msg = {
@@ -175,11 +167,7 @@ describe('magento-eqp-callback-parser', () => {
 
 		it('should extract .data from HttpError into httpResponse', async () => {
 			const httpErrorData = { error: 'api error', code: 403 };
-			(
-				configNode.eqp as Record<string, unknown> & {
-					callbackService: { parseCallback: ReturnType<typeof vi.fn> };
-				}
-			).callbackService.parseCallback.mockRejectedValue(new HttpError(403, 'Forbidden', httpErrorData));
+			configNode.eqp.callbackService.parseCallback.mockRejectedValue(new HttpError(403, 'Forbidden', httpErrorData));
 
 			const node = await setupNode();
 			const msg = {
@@ -203,11 +191,7 @@ describe('magento-eqp-callback-parser', () => {
 		});
 
 		it('should set httpResponse to null for generic Error', async () => {
-			(
-				configNode.eqp as Record<string, unknown> & {
-					callbackService: { parseCallback: ReturnType<typeof vi.fn> };
-				}
-			).callbackService.parseCallback.mockRejectedValue(new Error('generic error'));
+			configNode.eqp.callbackService.parseCallback.mockRejectedValue(new Error('generic error'));
 
 			const node = await setupNode();
 			const msg = {
@@ -230,11 +214,7 @@ describe('magento-eqp-callback-parser', () => {
 		});
 
 		it('should send error on second output index', async () => {
-			(
-				configNode.eqp as Record<string, unknown> & {
-					callbackService: { parseCallback: ReturnType<typeof vi.fn> };
-				}
-			).callbackService.parseCallback.mockRejectedValue(new Error('some error'));
+			configNode.eqp.callbackService.parseCallback.mockRejectedValue(new Error('some error'));
 
 			const node = await setupNode();
 			const msg = {
