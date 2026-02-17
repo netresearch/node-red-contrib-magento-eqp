@@ -1,58 +1,43 @@
-<h1 align="center">Welcome to node-red-contrib-magento-eqp 👋</h1>
-<p>
-  <a href="https://npmjs.com/package/@netresearch/node-red-contrib-magento-eqp">
-    <img alt="Version" src="https://img.shields.io/npm/v/@netresearch/node-red-contrib-magento-eqp?style=for-the-badge" />
-  </a>
+# @netresearch/node-red-contrib-magento-eqp
 
-  <a href="https://github.com/netresearch/node-red-contrib-magento-eqp/blob/main/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/npm/l/@netresearch/node-red-contrib-magento-eqp.svg?style=for-the-badge" />
-  </a>
+[![npm version](https://img.shields.io/npm/v/@netresearch/node-red-contrib-magento-eqp?style=flat-square)](https://www.npmjs.com/package/@netresearch/node-red-contrib-magento-eqp)
+[![CI](https://img.shields.io/github/actions/workflow/status/netresearch/node-red-contrib-magento-eqp/lint.yml?branch=main&style=flat-square&label=CI)](https://github.com/netresearch/node-red-contrib-magento-eqp/actions/workflows/lint.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/netresearch/node-red-contrib-magento-eqp/codeql.yml?branch=main&style=flat-square&label=CodeQL)](https://github.com/netresearch/node-red-contrib-magento-eqp/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/npm/l/@netresearch/node-red-contrib-magento-eqp?style=flat-square)](https://github.com/netresearch/node-red-contrib-magento-eqp/blob/main/LICENSE)
+[![Node.js](https://img.shields.io/node/v/@netresearch/node-red-contrib-magento-eqp?style=flat-square)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
 
-  <a href="https://github.com/netresearch/node-red-contrib-magento-eqp/actions" target="_blank">
-    <img alt="Build status" src="https://img.shields.io/github/workflow/status/netresearch/node-red-contrib-magento-eqp/%F0%9F%94%8E%20Lint?style=for-the-badge" />
-  </a>
+[Node-RED](https://nodered.org/) nodes for parsing [Adobe Commerce Marketplace EQP API](https://developer.adobe.com/commerce/marketplace/guides/eqp/v1/) callbacks.
 
-  <a href="https://twitter.com/netresearch" target="_blank">
-    <img alt="Twitter: Netresearch" src="https://img.shields.io/twitter/follow/netresearch?style=for-the-badge" />
-  </a>
-</p>
+## Installation
 
-> Node-RED module to parse Magento EQP callbacks
-
-The primary focus of this package is to provide a simple module to parse callbacks from the [Magento Marketplace EQP API](https://devdocs.magento.com/marketplace/eqp/v1/api.html).
-
-## Install
-
-Install this package via either NPM or the Palette menu in Node-RED.
+Install via npm or the Node-RED Palette Manager:
 
 ```sh
 npm install @netresearch/node-red-contrib-magento-eqp
 ```
 
-## Features
+## Nodes
 
-- Parse callbacks from `http in` nodes
-- Register callback URLs programmatically
-- Configuration node with secret
+| Node                          | Description                              |
+| ----------------------------- | ---------------------------------------- |
+| `magento-eqp-config`          | Configuration node with API secret       |
+| `magento-eqp-callback-parser` | Parse EQP callbacks from `http in` nodes |
 
 ## Example Flow
 
-The example flow is located in [example/flow.json](https://github.com/netresearch/node-red-contrib-magento-eqp/blob/main/example/flow.json)
+An example flow is available at [example/flow.json](https://github.com/netresearch/node-red-contrib-magento-eqp/blob/main/example/flow.json).
 
 ![Example Usage](https://i.imgur.com/xGD2WvE.png)
 
-## Author
+## Related packages
 
-👤 **DevMiner <devminer@devminer.xyz>**
+- [`@netresearch/node-magento-eqp`](https://github.com/netresearch/node-magento-eqp) — TypeScript API wrapper for the EQP API
 
-- Github: [@TheDevMinerTV](https://github.com/TheDevMinerTV)
+## Contributing
 
-## 🤝 Contributing
+Contributions, issues, and feature requests are welcome. See the [issues page](https://github.com/netresearch/node-red-contrib-magento-eqp/issues).
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/netresearch/node-magento-eqp/issues). You can also take a look at the [contributing guide](https://github.com/netresearch/node-magento-eqp/blob/main/CONTRIBUTING.md).
+## License
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
----
+[MIT](LICENSE) - Netresearch DTT GmbH
