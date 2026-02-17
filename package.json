@@ -1,6 +1,6 @@
 {
 	"name": "@netresearch/node-red-contrib-magento-eqp",
-	"version": "3.0.7",
+	"version": "4.0.0",
 	"description": "Node-RED module for parsing callbacks from the Magento Marketplace EQP API",
 	"main": "dist/index.js",
 	"repository": {
@@ -27,8 +27,7 @@
 		"prepack": "yarn build"
 	},
 	"dependencies": {
-		"@netresearch/node-magento-eqp": "^4.0.8",
-		"axios": "^1.13.5",
+		"@netresearch/node-magento-eqp": "^5.0.0",
 		"node-red-contrib-typescript-node": "^0.1.0"
 	},
 	"devDependencies": {
@@ -40,6 +39,6 @@
 		"typescript-eslint": "^8.0.0"
 	},
 	"engines": {
-		"node": ">=12"
+		"node": ">=20"
 	}
 }
