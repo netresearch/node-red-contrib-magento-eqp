@@ -7,5 +7,13 @@
   ],
   "automerge": true,
   "automergeType": "pr",
-  "platformAutomerge": true
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Hold TypeScript below v7 until typescript-eslint publishes TS7 peer support (currently <6.1.0). TS7 also removes baseUrl and moduleResolution=node10, which tsconfig still relies on; migrate tsconfig before lifting this.",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
+    }
+  ]
 }
