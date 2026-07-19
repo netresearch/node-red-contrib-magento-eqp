@@ -20,17 +20,20 @@
 		"node-red"
 	],
 	"scripts": {
-		"build": "yarn build:lib && node copyAssets.js",
+		"build": "bun run build:lib && node copyAssets.js",
 		"build:lib": "tsc -p tsconfig.build.json",
 		"build:lib:dev": "tsc -w",
 		"test": "vitest run",
 		"test:coverage": "vitest run --coverage",
 		"lint": "eslint src/",
-		"prepack": "yarn build",
+		"prepack": "bun run build",
 		"prepare": "husky"
 	},
 	"dependencies": {
 		"@netresearch/node-magento-eqp": "^5.0.0"
+	},
+	"overrides": {
+		"jsonata": "^2.2.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",

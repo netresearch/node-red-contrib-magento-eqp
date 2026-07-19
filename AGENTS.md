@@ -15,7 +15,7 @@
 | Type            | Node-RED contribution package (npm)                                     |
 | Language        | TypeScript (strict mode)                                                |
 | Node            | >=20                                                                    |
-| Package manager | yarn                                                                    |
+| Package manager | bun                                                                     |
 | Registry        | npm (`@netresearch` scope) + GitHub Packages                            |
 | Runtime         | Node-RED (Node.js)                                                      |
 
@@ -29,14 +29,14 @@
 
 > Source: CI (github-actions) + package.json — CI-sourced commands are most reliable
 
-| Task            | Command              | ~Time |
-| --------------- | -------------------- | ----- |
-| Install         | `yarn install`       | ~10s  |
-| Build           | `yarn build`         | ~15s  |
-| Build lib only  | `yarn build:lib`     | ~5s   |
-| Lint            | `yarn lint`          | ~5s   |
-| Test            | `yarn test`          | ~1s   |
-| Test + coverage | `yarn test:coverage` | ~1s   |
+| Task            | Command                 | ~Time |
+| --------------- | ----------------------- | ----- |
+| Install         | `bun install`           | ~10s  |
+| Build           | `bun run build`         | ~15s  |
+| Build lib only  | `bun run build:lib`     | ~5s   |
+| Lint            | `bun run lint`          | ~5s   |
+| Test            | `bun run test`          | ~1s   |
+| Test + coverage | `bun run test:coverage` | ~1s   |
 
 > Tests use **vitest** with `@vitest/coverage-v8`. Coverage thresholds enforced at 95% (statements/branches/functions/lines). Currently at 100%.
 
@@ -44,7 +44,7 @@
 
 1. **Before coding**: Read this AGENTS.md
 2. **After each change**: Run the smallest relevant check (test → lint → build)
-3. **Before committing**: Run `yarn test && yarn lint && yarn build:lib`
+3. **Before committing**: Run `bun run test && bun run lint && bun run build:lib`
 4. **Before claiming done**: Run verification and **show output as evidence**
 
 ## Architecture
@@ -128,7 +128,7 @@ copyAssets.js       → Copies .html files to dist/ during build
 
 ### Always Do
 
-- Run `yarn test && yarn lint && yarn build:lib` before committing
+- Run `bun run test && bun run lint && bun run build:lib` before committing
 - Add tests for new code (maintain ≥95% coverage)
 - Use TypeScript strict mode
 - Use conventional commit format: `type(scope): subject`
