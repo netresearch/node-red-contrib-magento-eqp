@@ -32,6 +32,12 @@
 	"dependencies": {
 		"@netresearch/node-magento-eqp": "^5.0.0"
 	},
+	"overrides": {
+		"jsonata": "^2.2.0"
+	},
+	"resolutions": {
+		"jsonata": "^2.2.0"
+	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@types/node": "^24.0.0",
