@@ -17,7 +17,12 @@ name: PR Quality Gates
 
 on:
   pull_request_target:
-    types: [opened, synchronize, reopened]
+    # `ready_for_review` is required: both jobs in the reusable are gated on
+    # `github.event.pull_request.draft == false`, so a PR opened as a draft is
+    # skipped. Without this activity type, undrafting alone would not re-trigger
+    # the workflow and the PR would never be quality-gated or approved until an
+    # unrelated push produced a `synchronize` event.
+    types: [opened, synchronize, reopened, ready_for_review]
 
 permissions: {}
 
