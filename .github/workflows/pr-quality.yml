@@ -1,13 +1,17 @@
-# Solo-maintainer auto-approve: approves PRs from repo collaborators and
-# trusted bots so that required_approving_review_count >= 1 is satisfied
-# without manual review.
+# Solo-maintainer auto-approve, routed through the org shared reusable so this
+# workflow has zero step-level action uses.
 #
-# For bot PRs (github-actions[bot]), GITHUB_TOKEN can't self-approve.
-# Set an APPROVE_TOKEN secret (PAT with repo scope) to approve bot PRs.
-# Without APPROVE_TOKEN, bot PRs require manual approval.
+# `auto-approve-require-write: true` keeps the historical authorisation model:
+# the PR author's repository permission is looked up explicitly
+# (GET /repos/{repo}/collaborators/{author}/permission) and the PR is only
+# approved for `admin` or `write`. It is NOT the weaker `author_association`
+# check the reusable applies by default.
 #
-# SECURITY: This workflow uses pull_request_target which runs with base branch
-# permissions. NEVER add an actions/checkout step here.
+# SECURITY: this workflow uses pull_request_target, so it runs with base-branch
+# permissions. The reusable checks out the BASE ref only (pull_request_target
+# resolves github.ref/github.sha to the base branch) with
+# persist-credentials: false, and never builds or executes repository code --
+# PR-authored code is never run with these permissions.
 
 name: PR Quality Gates
 
@@ -15,45 +19,22 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened]
 
-permissions:
-  pull-requests: write
+permissions: {}
 
 jobs:
-  auto-approve:
-    name: Auto-approve (collaborators)
-    runs-on: ubuntu-24.04
+  pr-quality:
+    name: PR Quality Gates
+    uses: netresearch/.github/.github/workflows/pr-quality.yml@main
+    # Union of the called workflow's job permissions (quality-gate and
+    # auto-approve both declare contents: read + pull-requests: write).
+    permissions:
+      contents: read
+      pull-requests: write
+    with:
+      auto-approve-require-write: true
+      auto-approve-message: >-
+        **Automated approval for maintainer PR**
 
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
-        with:
-          egress-policy: audit
 
-      - name: Check author permission
-        id: check-permission
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-          REPO: ${{ github.repository }}
-        run: |
-          # Bots are trusted if they match known bot accounts
-          if [[ "$PR_AUTHOR" == "dependabot[bot]" || "$PR_AUTHOR" == "renovate[bot]" || "$PR_AUTHOR" == "github-actions[bot]" ]]; then
-            echo "permission=bot" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          PERMISSION=$(gh api "repos/$REPO/collaborators/$PR_AUTHOR/permission" --jq '.permission' 2>/dev/null || echo "none")
-          echo "permission=$PERMISSION" >> "$GITHUB_OUTPUT"
-
-      - name: Auto-approve (collaborator)
-        if: steps.check-permission.outputs.permission == 'admin' || steps.check-permission.outputs.permission == 'write'
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr review --approve "$PR_URL"
-
-      - name: Auto-approve (bot via APPROVE_TOKEN)
-        if: steps.check-permission.outputs.permission == 'bot'
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.APPROVE_TOKEN || secrets.GITHUB_TOKEN }}
-        run: gh pr review --approve "$PR_URL" || true
+        Author holds `write` or `admin` permission on this repository and all
+        automated quality gates passed.
