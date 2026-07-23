@@ -1,59 +1,32 @@
-# Auto-merge bot PRs: Dependabot, Renovate, and release-please.
-# Requires: branch protection with required status checks (--auto flag needs it).
+# Auto-merge dependency PRs (Dependabot, Renovate), routed through the org
+# shared reusable so this workflow has zero step-level action uses.
 #
-# SECURITY: This workflow uses pull_request_target which runs with base branch
-# permissions. NEVER add an actions/checkout step here -- that would allow code
-# from the PR to execute with write access to the repository.
+# Requires: branch protection with required status checks (`--auto` needs it).
+#
+# `merge-strategy: rebase` is pinned deliberately. The reusable's auto-detector
+# would pick `--merge` here (this repo has squash disabled, merge commits and
+# rebase enabled), while this repo has always rebase-merged bot PRs.
+#
+# SECURITY: pull_request_target is required so that approving and enabling
+# auto-merge on dependency PRs gets a write-scoped token, which pull_request
+# does not provide. The called reusable only runs gh-CLI review/merge steps
+# gated on dependabot/renovate authorship -- it never checks out or executes
+# PR head code, so the usual pull_request_target risk does not apply.
 
-name: Auto-merge bot PRs
+name: Auto-merge dependency PRs
 
-on:
+on: # zizmor: ignore[dangerous-triggers]
   pull_request_target:
-    types: [opened, synchronize, reopened]
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: {}
 
 jobs:
   auto-merge:
-    name: Auto-merge bot PRs
-    runs-on: ubuntu-24.04
-    # Use user.login instead of actor -- actor can change on synchronize/rerun.
-    # release-please PRs come from github-actions[bot]; scope with label check
-    # to avoid approving unrelated github-actions PRs.
-    if: >-
-      github.event.pull_request.user.login == 'dependabot[bot]' ||
-      github.event.pull_request.user.login == 'renovate[bot]' ||
-      (github.event.pull_request.user.login == 'github-actions[bot]' &&
-       contains(github.event.pull_request.labels.*.name, 'autorelease: pending'))
-
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
-        with:
-          egress-policy: audit
-
-      - name: Dependabot metadata
-        id: metadata
-        if: github.event.pull_request.user.login == 'dependabot[bot]'
-        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Auto-approve PR
-        # Skip for github-actions[bot] -- GITHUB_TOKEN can't approve
-        # its own PRs. release-please PRs need approval from pr-quality.yml
-        # using APPROVE_TOKEN, or manual approval.
-        if: github.event.pull_request.user.login != 'github-actions[bot]'
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr review --approve "$PR_URL"
-
-      - name: Enable auto-merge
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # --auto waits for required status checks before merging
-        run: gh pr merge --auto --rebase "$PR_URL"
+    # Union of the called workflow's job permissions (auto-merge declares
+    # contents: write + pull-requests: write).
+    uses: netresearch/.github/.github/workflows/auto-merge-deps.yml@main
+    permissions:
+      contents: write
+      pull-requests: write
+    with:
+      merge-strategy: rebase
