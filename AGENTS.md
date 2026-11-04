@@ -94,6 +94,8 @@ copyAssets.js       → Copies .html files to dist/ during build
 - **Node-RED mocking:** Custom lightweight mock in `helpers/node-red-mock.ts` (no `node-red-node-test-helper`)
 - **Test pattern:** Call `module(RED)` → extract constructor from `registerType` → call `Constructor.call(mockNode, config)` → emit events → assert
 - **Module loading:** Use `await import('../module')` (not `require`) — vitest runs TypeScript natively via ESM transforms
+- **EQP class mock:** `vi.fn().mockImplementation(function () { … })`, never an arrow function — the code under test calls `new EQP(...)`, and an arrow function cannot be constructed (see `magento-eqp-config.test.ts`)
+- **Async input handlers:** `node.emit('input', msg)` then `await vi.waitFor(() => expect(...))`; the handler resolves after `emit` returns
 - **Coverage:** 30 tests, 100% coverage
 
 ## Golden Samples (follow these patterns)
